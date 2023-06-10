@@ -17,7 +17,18 @@ export const FriendList = ({ friends }) => {
   );
 };
 
-const FriendListItem = ({ id, avatar, name, isOnline }) => {
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ),
+};
+
+const FriendListItem = ({ avatar, name, isOnline }) => {
   const onlineStatus = isOnline ? styles.online : styles.offline;
 
   return (
@@ -32,4 +43,10 @@ const FriendListItem = ({ id, avatar, name, isOnline }) => {
       <p className={styles.name}>{name}</p>
     </li>
   );
+};
+
+FriendList.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired,
 };
